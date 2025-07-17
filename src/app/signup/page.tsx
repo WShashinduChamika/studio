@@ -6,7 +6,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase/config";
 import { useToast } from "@/hooks/use-toast";
 import { AuthForm } from "@/components/auth-form";
-import { Home } from "lucide-react";
+import { Home, Timer } from "lucide-react";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -26,12 +26,15 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="flex min-h-full flex-col justify-center bg-background py-12 sm:px-6 lg:px-8">
+    <div className="relative flex min-h-full flex-col justify-center bg-background py-12 sm:px-6 lg:px-8">
+       <div className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-8">
+        <Link href="/" aria-label="Home">
+          <Home className="h-8 w-8 text-muted-foreground transition-colors hover:text-primary" />
+        </Link>
+      </div>
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
-          <Link href="/">
-            <Home className="h-12 w-auto text-primary" />
-          </Link>
+          <Timer className="h-12 w-auto text-primary" />
         </div>
         <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-foreground">
           Create your account

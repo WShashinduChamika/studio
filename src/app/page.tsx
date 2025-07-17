@@ -13,7 +13,7 @@ export default function Home() {
       <LandingHeader />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 animate-fade-up animation-delay-200">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <div className="flex flex-col justify-center space-y-4">
@@ -44,7 +44,7 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-card">
+        <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-card animate-fade-up animation-delay-400">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -76,7 +76,7 @@ export default function Home() {
         </section>
         
         {/* Quote/Testimonial Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full py-12 md:py-24 lg:py-32 animate-fade-up animation-delay-600">
           <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
             <div className="space-y-3">
               <Quote className="mx-auto h-12 w-12 text-primary" />
@@ -89,7 +89,7 @@ export default function Home() {
         </section>
 
         {/* Final CTA Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 border-t bg-card">
+        <section className="w-full py-12 md:py-24 lg:py-32 border-t bg-card animate-fade-up animation-delay-800">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">Ready to Transform Your Productivity?</h2>

@@ -18,6 +18,7 @@ export function TimerControls() {
   const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const startTimeRef = useRef<Date | null>(null);
+  const pauseTimeRef = useRef<number>(0);
   
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -41,20 +42,37 @@ export function TimerControls() {
     setIsActive(true);
     setIsPaused(false);
     startTimeRef.current = new Date();
+    pauseTimeRef.current = 0;
   };
 
   const handlePauseResume = () => {
     setIsPaused(!isPaused);
+    if (!isPaused) {
+      // Pausing
+      pauseTimeRef.current = Date.now();
+    } else {
+      // Resuming
+      if (startTimeRef.current && pauseTimeRef.current > 0) {
+        const pauseDuration = Date.now() - pauseTimeRef.current;
+        startTimeRef.current = new Date(startTimeRef.current.getTime() + pauseDuration);
+        pauseTimeRef.current = 0;
+      }
+    }
   };
 
   const handleStop = async () => {
     if (user && startTimeRef.current) {
       try {
+        let endTime = new Date();
+        if(isPaused && pauseTimeRef.current > 0){
+          endTime = new Date(pauseTimeRef.current)
+        }
+        
         await addTimeLog({
           userId: user.uid,
           taskName,
           startTime: startTimeRef.current,
-          endTime: new Date(),
+          endTime: endTime,
           duration: time,
         });
         toast({ title: "Success", description: "Time log saved successfully." });
@@ -63,9 +81,11 @@ export function TimerControls() {
       }
     }
     setIsActive(false);
+    setIsPaused(false);
     setTime(0);
     setTaskName("");
     startTimeRef.current = null;
+    pauseTimeRef.current = 0;
   };
 
   return (

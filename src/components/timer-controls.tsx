@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -100,7 +101,7 @@ export function TimerControls() {
           onChange={(e) => setTaskName(e.target.value)}
           disabled={isActive}
         />
-        <div className="flex items-center justify-between rounded-md bg-muted p-4">
+        <div className="flex flex-col sm:flex-row items-center justify-between rounded-md bg-muted p-4 gap-4">
           <div className="text-4xl font-bold font-mono text-foreground">
             {formatDuration(time)}
           </div>

@@ -2,24 +2,32 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { config } from "dotenv";
+import { getAnalytics, isSupported } from "firebase/analytics";
 
-config();
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: "AIzaSyA_JOQc2OamU-Gecp7-Km3pdUdVmUzH94M",
+  authDomain: "timewise-3dbcf.firebaseapp.com",
+  projectId: "timewise-3dbcf",
+  storageBucket: "timewise-3dbcf.firebasestorage.app",
+  messagingSenderId: "730337701477",
+  appId: "1:730337701477:web:78f3b3cbd5dcad28f8608c",
+  measurementId: "G-MR4ZHSCKDM"
 };
 
-// Initialize Firebase
+// Initialize Firebase (handle hot-reload in dev)
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+
+// Initialize Firebase services
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-export { app, auth, db };
+// Analytics (only if supported and browser)
+let analytics = null;
+if (typeof window !== "undefined") {
+  isSupported().then((yes) => {
+    if (yes) analytics = getAnalytics(app);
+  });
+}
+
+export { app, auth, db, analytics };

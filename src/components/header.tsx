@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useAuthentication } from "@/hooks/use-authentication";
@@ -30,7 +31,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-2">
           <Timer className="h-8 w-8 text-primary" />
-          <h1 className="text-xl font-bold text-foreground">TimeWise</h1>
+          <h1 className="text-xl font-bold text-foreground hidden sm:block">TimeWise</h1>
         </div>
         {user && (
           <DropdownMenu>

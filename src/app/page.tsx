@@ -36,7 +36,7 @@ export default function Home() {
                 alt="Hero"
                 width={600}
                 height={400}
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
+                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
                 data-ai-hint="productivity dashboard"
               />
             </div>

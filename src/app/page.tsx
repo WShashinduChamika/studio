@@ -37,7 +37,7 @@ export default function Home() {
                 width={600}
                 height={400}
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
-                data-ai-hint="productivity dashboard"
+                data-ai-hint="time management"
               />
             </div>
           </div>

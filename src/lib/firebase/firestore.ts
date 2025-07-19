@@ -42,6 +42,7 @@ export const addTimeLog = (log: TimeLogInput) => {
 
 // Get real-time updates for a user's time logs
 // Set first commit
+// Set second commit
 export const getTimeLogsStream = (
   userId: string,
   callback: (logs: TimeLog[]) => void

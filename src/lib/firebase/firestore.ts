@@ -44,6 +44,7 @@ export const addTimeLog = (log: TimeLogInput) => {
 // Set first commit
 // Set second commit
 // Set third commit
+// Set fourth commit 
 export const getTimeLogsStream = (
   userId: string,
   callback: (logs: TimeLog[]) => void
